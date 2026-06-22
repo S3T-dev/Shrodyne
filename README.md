@@ -11,6 +11,6 @@ This project grew out of my interest in quantum physics and chemistry. I wanted 
 ## Contact Me
 
 The best way to reach me is on Discord — feel free to DM me!
-
+@bread_mme
 [![Discord](https://img.shields.io/badge/Discord-Join%20Us-5865F2?logo=discord&logoColor=white)](https://discord.gg/Wx9YwhcPyT)
-[![bread_mme](https://img.shields.io/badge/@-bread_mme-2C2F33?logo=discord&logoColor=5865F2&style=flat-square)](https://discord.gg/Wx9YwhcPyT)
+
