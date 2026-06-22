@@ -14,7 +14,7 @@ See [ROADMAP.md](./ROADMAP.md) for a detailed breakdown of each milestone.
 
 - **v0.1** — Set up the build system; add basic rendering of test figures, with the ability to move, zoom, and speed up or slow down time.
 - **v0.2** — Basic simulation of a proton, including gluons and quarks.
-- **v0.3** — Add neutrons and the weak force, to work with nuclei.
+- **v0.3** — Add neutrons and bind nucleons into nuclei via the residual strong force.
 - **v0.4** — Add electrons and set up the rules governing them.
 - **v0.5** — Interface enhancements for better usability.
 - **v1.0** — First release, after bugfixes and a thorough double-check of every corner.
