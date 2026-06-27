@@ -93,6 +93,9 @@ target_include_directories(imgui PUBLIC
 target_link_libraries(imgui PUBLIC glfw Vulkan::Vulkan)
 
 # --- Project sources ---
+# Only collect source files from the actual project source tree, not the build
+# directory. This avoids accidentally compiling external dependency test files
+# that are created inside the build tree by FetchContent.
 file(GLOB_RECURSE SHRODYNE_SOURCES CONFIGURE_DEPENDS
     ${CMAKE_SOURCE_DIR}/src/*.cpp
 )
@@ -112,6 +115,8 @@ target_link_libraries(shrodyne PRIVATE
     Vulkan::Vulkan
 )
 
+target_include_directories(shrodyne PRIVATE ${vma_SOURCE_DIR}/include)
+
 # Required when mixing volk with any code path that still includes
 # vulkan/vulkan.h directly, so the static Vulkan loader's prototypes don't
 # collide with volk's dynamically loaded function pointers.
@@ -120,7 +125,7 @@ target_compile_definitions(shrodyne PRIVATE VK_NO_PROTOTYPES)
 # --- Shader compilation ---
 # (Existing block, now wired into the real shrodyne target instead of
 # assuming one already exists.)
-file(GLOB_RECURSE SHADER_SOURCES
+file(GLOB_RECURSE SHADER_SOURCES CONFIGURE_DEPENDS
     ${CMAKE_SOURCE_DIR}/shaders/*.vert
     ${CMAKE_SOURCE_DIR}/shaders/*.frag
     ${CMAKE_SOURCE_DIR}/shaders/*.comp
@@ -144,3 +149,14 @@ endforeach()
 
 add_custom_target(shaders DEPENDS ${SPIRV_BINARY_FILES})
 add_dependencies(shrodyne shaders)
+
+# Doxygen documentation target (optional)
+find_package(Doxygen)
+if(DOXYGEN_FOUND)
+    set(DOXYGEN_IN ${CMAKE_SOURCE_DIR}/Doxyfile)
+    add_custom_target(docs
+        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_IN}
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        COMMENT "Generating API documentation with Doxygen"
+    )
+endif()

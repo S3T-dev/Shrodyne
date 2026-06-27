@@ -4,7 +4,7 @@
 
 BUILD_DIR   := build
 BUILD_TYPE  ?= Debug
-GENERATOR   ?= Ninja
+GENERATOR   ?= "Unix Makefiles"
 JOBS        ?= $(shell nproc)
 BIN_NAME    := shrodyne
 

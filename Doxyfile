@@ -1,0 +1,15 @@
+# Doxyfile 1.8.17
+PROJECT_NAME           = "Shrodyne"
+OUTPUT_DIRECTORY       = docs
+INPUT                  = src include README.md
+RECURSIVE              = YES
+GENERATE_LATEX         = NO
+GENERATE_HTML          = YES
+QUIET                  = YES
+EXTRACT_ALL            = YES
+FILE_PATTERNS          = *.cpp *.h *.hpp
+STRIP_FROM_PATH        = $(PWD)
+HTML_OUTPUT            = html
+GENERATE_TREEVIEW      = YES
+
+# Optional: set project logo, etc.
